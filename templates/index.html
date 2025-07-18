@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculation Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    {% if bmi_results %}
+    <h1>BMI Calculation Results</h1>
+    <table>
+        <tr>
+            <th>Pair</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>BMI</th>
+        </tr>
+        {% for row in bmi_results %}
+        <tr>
+            <td>{{ row.index }}</td>
+            <td>{{ row.height }}</td>
+            <td>{{ row.weight }}</td>
+            <td>{{ row.bmi }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h1>Welcome to the FHIR API!</h1>
+    <p style="text-align:center;">Go to <a href="/bmi">/bmi</a> to see BMI calculations.</p>
+    {% endif %}
+</body>
+
+</html>
